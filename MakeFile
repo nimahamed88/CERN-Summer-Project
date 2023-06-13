@@ -1,0 +1,2 @@
+analysis02: analysis02.cc
+	g++ -I/home/nima/Downloads/pythia8226/include analysis02.cc -o analysis02 -lpythia8 -L/home/nima/Downloads/pythia8226/lib
