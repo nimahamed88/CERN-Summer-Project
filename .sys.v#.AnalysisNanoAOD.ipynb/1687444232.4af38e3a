@@ -1,0 +1,156 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "bb1ecb61",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Welcome to JupyROOT 6.24/00\n"
+     ]
+    }
+   ],
+   "source": [
+    "import ROOT\n",
+    "import numpy as np\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "9d945140",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "infile='pp_ttxbbx_NLO_MG5_PY8_NANOGEN.root'\n",
+    "outfile='ttxbbgenlevel.root'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "2e5b0a17",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "runtime_error",
+     "evalue": "Template method resolution failed:\n  ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>\n    runtime_error: \nRDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash\n All RDF objects that have not run an event loop yet should be considered in an invalid state.\n\n  ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>\n    runtime_error: \nRDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash\n All RDF objects that have not run an event loop yet should be considered in an invalid state.\n",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mruntime_error\u001b[0m                             Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-3-1cb4b4916109>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0;31m#lepton selection: select in the kinematics region of interest\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 7\u001b[0;31m \u001b[0mrdf\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mrdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mDefine\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'genlep'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;31m \u001b[0m\u001b[0;31m\\\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      8\u001b[0m          \u001b[0;34m.\u001b[0m\u001b[0mDefine\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'n_genlep'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'Sum(genlep)'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;31m \u001b[0m\u001b[0;31m\\\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m          \u001b[0;34m.\u001b[0m\u001b[0mFilter\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'n_genlep>0'\u001b[0m \u001b[0;34m,\u001b[0m \u001b[0;34m'1-1 cuts: only events with generated leptons = True'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mruntime_error\u001b[0m: Template method resolution failed:\n  ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>\n    runtime_error: \nRDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash\n All RDF objects that have not run an event loop yet should be considered in an invalid state.\n\n  ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RLoopManager,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>\n    runtime_error: \nRDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash\n All RDF objects that have not run an event loop yet should be considered in an invalid state.\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Warning in <RTaskArenaWrapper>: CPU Bandwith Control Active. Proceeding with 4 threads accordingly\n",
+      "Warning in <TClass::Init>: no dictionary for class edm::ProcessHistory is available\n",
+      "Warning in <TClass::Init>: no dictionary for class edm::ProcessConfiguration is available\n",
+      "Warning in <TClass::Init>: no dictionary for class edm::Hash<1> is available\n",
+      "Warning in <TClass::Init>: no dictionary for class edm::ParameterSetBlob is available\n",
+      "Warning in <TClass::Init>: no dictionary for class pair<edm::Hash<1>,edm::ParameterSetBlob> is available\n",
+      "input_line_74:2:28: error: use of undeclared identifier 'GenPart_status'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                           ^\n",
+      "input_line_74:2:49: error: use of undeclared identifier 'GenPart_pt'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                ^\n",
+      "input_line_74:2:69: error: use of undeclared identifier 'GenPart_eta'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                                    ^\n",
+      "input_line_74:2:94: error: use of undeclared identifier 'GenPart_pdgId'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                                                             ^\n",
+      "input_line_74:2:120: error: use of undeclared identifier 'GenPart_pdgId'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                                                                                       ^\n",
+      "input_line_78:2:28: error: use of undeclared identifier 'GenPart_status'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                           ^\n",
+      "input_line_78:2:49: error: use of undeclared identifier 'GenPart_pt'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                ^\n",
+      "input_line_78:2:69: error: use of undeclared identifier 'GenPart_eta'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                                    ^\n",
+      "input_line_78:2:94: error: use of undeclared identifier 'GenPart_pdgId'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                                                             ^\n",
+      "input_line_78:2:120: error: use of undeclared identifier 'GenPart_pdgId'\n",
+      "auto lambda0 = [](){return GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)\n",
+      "                                                                                                                       ^\n"
+     ]
+    }
+   ],
+   "source": [
+    "ROOT.gInterpreter.Declare('#include \"selection_helpers.h\"')\n",
+    "    \n",
+    "ROOT.ROOT.EnableImplicitMT()\n",
+    "rdf = ROOT.RDataFrame('Events',infile)\n",
+    "\n",
+    "#lepton selection: select in the kinematics region of interest\n",
+    "rdf = rdf.Define('genlep', 'GenPart_status==1 && GenPart_pt>1 && abs(GenPart_eta)<2.4 && (abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13)') \\\n",
+    "         .Define('n_genlep', 'Sum(genlep)') \\\n",
+    "         .Filter('n_genlep>0' , '1-1 cuts: only events with generated leptons = True')\n",
+    "\n",
+    "# report the results of cut application:\n",
+    "rdf.Report()\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "for c in ['pdgId','pt','eta','phi']:\n",
+    "    rdf = rdf.Define(f'GenLep_{c}',f'GenPart_{c}[genlep]')\n",
+    "    \n",
+    "    \n",
+    "#save the selection\n",
+    "columns=['n_genlep']\n",
+    "\n",
+    "\n",
+    "rdf.Snapshot('Events',outfile,columns)\n",
+    "rdf.Report().Print()\n",
+    "\n",
+    "ROOT.ROOT.DisableImplicitMT()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c2b50c95",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
